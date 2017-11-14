@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--兼容ie-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+    <link rel="stylesheet" href="__CSS__/personal.css">
+</head>
+<body>
+
+<!--导航条-->
+<nav class="navbar navbar-default" id="mynav">
+    <div class="container">
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" id="myimg"></a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>  我的问卷</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> 10086 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">用户信息</a></li>
+                        <li><a href="#">升级</a></li>
+                        <li><a href="#">客服中心</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-bell"></span> 消息</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-off"></span> 退出</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container" id="creat">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2">
+            <a id="creat_icon" href="{:url('wjx/wjx/publish')}">+ 创建问卷</a>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <form class="navbar-form navbar-left" method="post" action="{:url('wjx/wjx/personal')}">
+                <div class="form-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+        <div class="col-lg-4 col-md-2 col-sm-2"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 text-right" >
+            <div id="folder-btn">
+                <span class="glyphicon glyphicon-trash"></span>
+                <span> 回收站</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--<div class="container" id="mypanel">
+    <div class="row">
+        <div class="panel panel-info">
+            <div id="app">
+                <wjlist></wjlist>
+            </div>
+           &lt;!&ndash; <div class="panel-heading panel-info" id="panel-heading">
+                <div id="panel_left">
+                    <span id="panel_left_title" >你幸福吗？</span>
+                    <span id="panel_left_id" >ID:123456</span>
+                </div>
+                <div id="panel_right">
+                    <span class="panel_right-runing">●&nbsp;运行中</span>
+                    <span class="panel_right-time">10月22日</span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xm-12 text-left">
+                            <ul class="panel_body_left">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> 设计问卷<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">修改问卷</a></li>
+                                        <li><a href="#">问卷设置</a></li>
+                                        <li><a href="#">文件外观</a></li>
+                                        <li><a href="#">打印/word</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> 回收答案 <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">文件链接</a></li>
+                                        <li><a href="#">信息邀请</a></li>
+                                        <li><a href="#">样本服务</a></li>
+                                        <li><a href="#">互填问卷</a></li>
+                                        <li><a href="#">申请推荐</a></li>
+                                        <li><a href="#">回收导向</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> 分析下载 <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">统计分析</a></li>
+                                        <li><a href="#">下载答卷</a></li>
+                                        <li><a href="#">来源分析</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12  col-xm-12  content">
+                            <div class="panel_nody_right">
+                                <span style="margin-left: 15px;"><span class="glyphicon glyphicon-record"></span> 停止</span>
+                                <span style="margin-left: 15px;"><span class="glyphicon glyphicon-list-alt"></span> 复制</span>
+                                <span style="margin-left: 15px;"><span class="glyphicon glyphicon-trash"></span> 删除</span>
+                                <span style="margin-left: 15px;"><span class="glyphicon glyphicon-file"></span> 文件夹</span>
+                                <span style="margin-left: 15px;"><span class="glyphicon glyphicon-bell"></span> 提醒</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="warning_word">此问卷答卷数较少，可使用样本服务快速回收答卷</span>
+            </div>&ndash;&gt;
+        </div>
+    </div>
+</div>-->
+{volist name='wjxList' id='value'}
+<div class="panel panel-info">
+    <div class="panel-heading">{$value.title}</div>
+    <div class="panel-body">{$value.info}</div>
+</div>
+{/volist}
+{$wjxList->render()}
+</body>
+</html>
+<script src="__JS__/jquery-3.2.1.min.js"></script>
+<script src="__JS__/bootstrap.min.js"></script>
+<script src="__JS__/vue.js"></script>
+<script>
+    Vue.component('wjlist',{
+        template : '<div id="content">\
+                   <div class="panel panel-default" v-for="param in datalist">\
+                     <div class="panel-heading">\
+                        {{param.ptitle}}\
+                    </div>\
+                    <div class="panel-body">\
+                        {{param.qtitle}}\
+                    </div>\
+                    <div class="panel-footer">\
+                        {{param.otitle}}\
+                    </div>\
+                  </div>\
+                  <nav>\
+                    <ul class="pager">\
+                      <li><a href="#" @click="prev()">Previous</a></li>\
+                      <li><a href="#" @click="next()">Next</a></li>\
+                    </ul>\
+                  </nav>\
+                </div>',
+        data:function(){
+            return {
+                datalist :  this.getData(this,1),
+                currentPage : 1,
+                pageNum : 1
+            }
+        },
+        methods : {
+
+            prev : function(){
+                this.currentPage = this.currentPage - 1 <= 0 ? 1 : this.currentPage - 1;
+                this.getData(this,this.currentPage)
+            },
+            next : function(){
+                //都是去调用自带的getData方法重新请求数据，替换内容，就实现了无刷新的数据分页
+                this.currentPage =  this.currentPage + 1 >= this.totalPage ?  this.totalPage : this.currentPage + 1;
+                this.getData(this,this.currentPage)
+
+            },
+            getData : function(_self,page){
+                $.ajax({
+                    url:'{:url("wjx/wjx/page")}',
+                    data:'page='+page,
+                    dataType:'json',
+                    type:'post',
+                    success:function(res){
+                        console.log(res.pageNum);
+                        _self.datalist=res.wjData;
+                        _self.totalPage = res.pageNum;
+                    }
+                })
+            }
+        }
+    });
+
+    var vue = new Vue({
+        el  : '#app'
+    })
+
+</script>

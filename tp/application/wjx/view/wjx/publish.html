@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--兼容ie-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="http://www.bootcss.com/p/layoutit/css/bootstrap-combined.min.css">
+    <link rel="stylesheet" href="__CSS__/publish.css">
+
+</head>
+<body>
+<div id="app">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container-fluid">
+                            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="#" class="brand">问卷星</a>
+                            <div class="nav-collapse collapse navbar-responsive-collapse">
+                                <ul class="nav">
+                                    <li class="active">
+                                        <a href="#">完成编辑</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">预览</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn" type="button" id="addOne" v-on:click="addOne()">单选题</button>
+                    <button class="btn" type="button" id="addMore"  @click="addMore()">多选题</button>
+                </div>
+                <h2 class="text-center" id="title">
+                    <input type="text" placeholder="问卷标题内容">
+                </h2>
+                <div class="text-left"  style="border: 1px solid paleturquoise;padding: 20px 20px;">
+                    <div id="tiMu" v-for="list in tmList">
+                        <p>{{ list.title }}</p>
+                        <input type="text"  v-model="list.title">
+                        <ul>
+                            <li v-for="options in list.option">
+                                <p>{{ options.title }}</p>
+                                <input type="text"  v-model="options.title">
+                            </li>
+                        </ul>
+                        <!--<div><span>第一道题:</span><span>{{ message }}</span></div>
+                        <p><span>选项：</span><span><span>{{ content }}</span></p>
+    -->
+                    </div>
+                    <div id="add" style="padding: 20px 10px;" class="text-center" >
+                        <div id="newOption">
+
+                            <!-- <p>请输入题目标题： <input v-model="message"></p>
+                             <p>请输入选项内容： <input v-model="content"></p>-->
+                        </div>
+                        <!-- <button  type='button' class='btn btn-default' id="addOption">添加选项</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="__JS__/jquery-3.2.1.min.js"></script>
+<script src="__JS__/bootstrap.min.js"></script>
+<script src="__JS__/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            timucount: 2,
+            tmList:[
+                {
+                    'title':'题目1',
+                    'option':[
+                        {
+                            'title':'题目1-选项1'
+                        },
+                        {
+                            'title':'题目1-选项2'
+                        }
+                    ]
+                },
+                {
+                    'title':'题目2',
+                    'option':[
+                        {
+                            'title':'题目2-选项1'
+                        },
+                        {
+                            'title':'题目2-选项2'
+                        }
+                    ]
+                }
+            ]
+        },
+        methods:{
+            addOne: function () {
+                this.timucount ++;
+               // console.log(this.timucount);
+                var tmData={
+                    'title':'题目'+ this.timucount,
+                    'option':[
+                        {
+                            'title':'题目'+ this.timucount +'-选项1'
+                        },
+                        {
+                            'title':'题目'+ this.timucount +'-选项2'
+                        }
+                    ]
+                };
+                this.tmList.push(tmData);
+                var _self=this;
+                $.ajax({
+                    url:'./index.php?c=publish&a=getData',
+                    data:_self.tmList,
+                    dataType:'json',
+                    type:'post',
+                    success:function(res){
+                        console.log(res)
+                    }
+                })
+            }
+        },
+        created:function(){
+            //加载自动执行
+        }
+    });
+
+
+</script>
+<script>
+ /*   var timuNumber=1;
+    $("#addOne").click(function(){
+        var $timu=$("<div id='timu_"+timuNumber+"'><span>第"+timuNumber+"道题:</span><span>{{ message }}</span><br><span>选项：</span><span>{{ content }}</span></div>");
+        $("#tiMu").append($timu);
+        var $input=$('<p>请输入题目标题： <input v-model="message"></p> <p>请输入选项内容： <input v-model="content"></p>');
+        var $btn1=$('<button type="button" class="btn btn-default" onclick="addOption('+timuNumber+')">添加选项</button><br>');
+        var $btn2=$('<button type="button" class="btn btn-default" onclick="finish()">完成修改</button><br>');
+        $("#newOption").append($input,$btn1,$btn2);
+        new Vue({
+            el: '#app',
+            data: {
+                message: '标题内容！',
+                content: '选项内容！'
+            }
+        });
+        timuNumber++;
+    });
+    function addOption(id){
+        var $option1=$('<br><div>请输入选项内容： <input v-model="content1"></div>');
+        $("#newOption").append($option1);
+        var $option2=$('<div><span>选项：</span><span>{{ content1 }}</span></div>');
+        $("#tiMu").append($option2);
+        new Vue({
+            el: '#app',
+            data: {
+                content1: '新的选项内容！'
+            }
+        });
+    }
+    function finish(){
+        $("#newOption").empty();
+
+    }
+*/
+
+</script>
+</html>
